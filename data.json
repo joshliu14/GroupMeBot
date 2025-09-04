@@ -1,0 +1,29 @@
+{
+    "dishes" : {
+        "Monday": "Caleb",
+        "Tuesday": "Dabin",
+        "Wednesday": "Wes",
+        "Thursday": "Joonsung",
+        "Friday": "Taeki/Isaac",
+        "Saturday": "Wilson",
+        "Sunday": "Josh"
+    },
+    "cleaning" : [
+        "Upstairs Bathroom",
+        "Downstairs Bathroom",
+        "Kitchen",
+        "Vacuum",
+        "Clean pots, pans, and cubbies",
+        "Fridge and freezer purge"
+    ],
+    "members" : [
+        "Caleb",
+        "Dabin",
+        "Wes",
+        "Joonsung",
+        "Taeki",
+        "Isaac",
+        "Wilson",
+        "Josh"
+    ]
+}
