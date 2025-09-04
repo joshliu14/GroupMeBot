@@ -26,7 +26,7 @@ def current_eastern_time():
 # ---------------------------
 # Load environment variables
 # ---------------------------
-load_dotenv()
+load_dotenv('.env')
 
 GROUPME_BOT_ID = os.getenv('GROUPME_BOT_ID')
 ACCESS_TOKEN = os.getenv('GROUPME_ACCESS_TOKEN')

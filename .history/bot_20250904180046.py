@@ -26,7 +26,7 @@ def current_eastern_time():
 # ---------------------------
 # Load environment variables
 # ---------------------------
-load_dotenv()
+load_dotenv('/home/joshliu/mysite/.env')
 
 GROUPME_BOT_ID = os.getenv('GROUPME_BOT_ID')
 ACCESS_TOKEN = os.getenv('GROUPME_ACCESS_TOKEN')
@@ -39,7 +39,7 @@ TRIGGER_WORDS = ["hey jarvis"]
 # ---------------------------
 # Load static JSON data
 # ---------------------------
-with open("data.json", "r") as f:
+with open("/home/joshliu/mysite/data.json", "r") as f:
     data = json.load(f)
 members = ", ".join(data["members"])
 cleaning_tasks = ", ".join(data["cleaning"])
