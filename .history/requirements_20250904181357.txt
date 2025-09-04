@@ -1,7 +1,0 @@
-Flask
-requests
-python-dotenv
-google-genai
-apscheduler
-pytz
-gunicorn
