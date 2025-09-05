@@ -5,3 +5,4 @@ google-genai
 apscheduler
 pytz
 gunicorn
+google-cloud-secret-manager
