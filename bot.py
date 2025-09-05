@@ -5,13 +5,25 @@ from datetime import datetime
 import pytz
 from google import genai
 from google.genai import types
-from dotenv import load_dotenv
 import requests
-from apscheduler.schedulers.background import BackgroundScheduler
+from google.cloud import secretmanager
 
-scheduler = BackgroundScheduler()
-scheduler.start()
-
+def get_secret(secret_id, version_id="latest"):
+    """Retrieve a secret from Google Secret Manager."""
+    # Create the Secret Manager client
+    client = secretmanager.SecretManagerServiceClient()
+    
+    # Get the project ID (automatically detected in Cloud Run)
+    project_id = os.environ.get("GOOGLE_CLOUD_PROJECT")
+    
+    # Build the resource name of the secret version
+    name = f"projects/{project_id}/secrets/{secret_id}/versions/{version_id}"
+    
+    # Access the secret version
+    response = client.access_secret_version(request={"name": name})
+    
+    # Return the decoded payload
+    return response.payload.data.decode("UTF-8")
 
 def current_eastern_time():
     """
@@ -26,10 +38,9 @@ def current_eastern_time():
 # ---------------------------
 # Load environment variables
 # ---------------------------
-load_dotenv()
-
-GROUPME_BOT_ID = os.getenv('GROUPME_BOT_ID')
-ACCESS_TOKEN = os.getenv('GROUPME_ACCESS_TOKEN')
+GROUPME_BOT_ID = get_secret('GROUPME_BOT_ID')
+ACCESS_TOKEN = get_secret('GROUPME_ACCESS_TOKEN')
+MONGO_DB_PASSWORD = get_secret('MONGO_DB_PASSWORD')
 GROUP_ID = "109980984"
 GROUPME_API_URL = 'https://api.groupme.com/v3/bots/post'
 GROUPME_MESSAGES_URL = f"https://api.groupme.com/v3/groups/{GROUP_ID}/messages"
