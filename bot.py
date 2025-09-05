@@ -41,6 +41,7 @@ def current_eastern_time():
 GROUPME_BOT_ID = get_secret('GROUPME_BOT_ID')
 ACCESS_TOKEN = get_secret('GROUPME_ACCESS_TOKEN')
 MONGO_DB_PASSWORD = get_secret('MONGO_DB_PASSWORD')
+GEMINI_API_KEY = get_secret('GEMINI_API_KEY')
 GROUP_ID = "109980984"
 GROUPME_API_URL = 'https://api.groupme.com/v3/bots/post'
 GROUPME_MESSAGES_URL = f"https://api.groupme.com/v3/groups/{GROUP_ID}/messages"
@@ -65,7 +66,7 @@ cleaning_schedule = data.get("cleaning_schedule", cleaning_tasks)
 # Initialize Flask and Gemini
 # ---------------------------
 app = Flask(__name__)
-client = genai.Client()
+client = genai.Client(api_key=GEMINI_API_KEY)
 
 # ---------------------------
 # Define functions/tools for Gemini
