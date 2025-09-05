@@ -14,7 +14,7 @@ def get_secret(secret_id, version_id="latest"):
     client = secretmanager.SecretManagerServiceClient()
     
     # Get the project ID (automatically detected in Cloud Run)
-    project_id = os.environ.get("GOOGLE_CLOUD_PROJECT")
+    project_id = os.environ.get("groupme-bot-471121")
     
     # Build the resource name of the secret version
     name = f"projects/{project_id}/secrets/{secret_id}/versions/{version_id}"
